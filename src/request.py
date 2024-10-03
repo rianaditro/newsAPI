@@ -1,7 +1,7 @@
 import asyncio
 import aiohttp
 
-from src.response import WebResponse
+from response import WebResponse
 
 class WebRequests:
     """Class to make web requests."""
