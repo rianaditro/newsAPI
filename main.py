@@ -1,7 +1,7 @@
 import asyncio
 
 from src.request import WebRequests
-from src.response import WebResponse
+from src.parse import Parser
 
 
 async def main(urls:list):
@@ -12,12 +12,20 @@ async def main(urls:list):
 
     for result in fetcher.get_result():
         print(result)
+        extracted_urls = Parser.list_urls(result.content)
+
+        print({
+            "url": result.url,
+            "status_code": result.status_code,
+            "count": len(extracted_urls),
+            "data": extracted_urls
+        })
+
 
 
 if __name__ == "__main__":
     urls = [
-        "https://jsonplaceholder.typicode.com/posts",
-        "https://jsonplaceholder.typicode.com/comments",
-        "https://jsonplaceholder.typicode.com/photos"
+        "https://news.detik.com/indeks"
     ]
+    
     asyncio.run(main(urls))
