@@ -1,10 +1,15 @@
 import asyncio
 
+from datetime import date, datetime
 from src.request import WebRequests
 from src.parse import Parser
 
 
 async def run_concurrently(urls:list):
+    # get date and time
+    data_date = date.today().strftime("%d/%m/%Y")
+    data_time = datetime.now().strftime("%H:%M:%S")
+
     # create request for all urls
     fetcher = WebRequests(urls)
     # fetch concurrently
@@ -15,6 +20,8 @@ async def run_concurrently(urls:list):
         "url": urls,
         "status_code": 200,
         "message": "ok",
+        "date": data_date,
+        "time": data_time,
         "count": 0,
         "data": []
     }
