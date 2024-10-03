@@ -60,11 +60,14 @@ async def main(urls:list):
     for result in results:
         print(result)
 
+def run(urls:list):
+    asyncio.run(main(urls))
+
 
 if __name__ == "__main__":
     urls = [
         "https://news.detik.com/indeks"
     ]
 
-    asyncio.run(main(urls))
+    run(urls)
 
