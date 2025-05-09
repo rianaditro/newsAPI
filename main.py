@@ -1,4 +1,3 @@
-from typing import Union
 from fastapi import FastAPI
 
 from src.main_scraper import main as scraper
@@ -12,6 +11,9 @@ def read_root():
     return {"status code": 200,
             "message": "ok"}
 
+@app.get("/greetings")
+def greetings():
+    return {"greetings": "hello"}
 
 @app.get("/newsList/{site}")
 def newsList(site:str = "detik"):
